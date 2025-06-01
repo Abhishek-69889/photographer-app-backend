@@ -437,7 +437,7 @@
   "variable": [
     {
       "key": "baseUrl",
-      "value": "http://localhost:5000",
+      "value": "https://photographer-app-backend.onrender.com",
       "type": "string"
     },
     {
