@@ -1,0 +1,449 @@
+{
+  "info": {
+    "name": "Pixisphere Backend API",
+    "_postman_id": "pixisphere-backend-001",
+    "description": "Pixisphere backend API collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "-- All Users APIs --"
+    },
+    {
+      "name": "Signup",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/signup",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","auth","signup"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Alice Partner\",\"email\":\"alice@example.com\",\"password\":\"password123\",\"role\":\"partner\"}"
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","auth","login"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"alice@example.com\",\"password\":\"password123\"}"
+        }
+      }
+    },
+    {
+      "name": "Request OTP",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/request-otp",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","auth","request-otp"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"alice@example.com\"}"
+        }
+      }
+    },
+    {
+      "name": "-- Client APIs --"
+    },
+    {
+      "name": "Create Inquiry",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/inquiry",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","inquiry"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"category\":\"wedding\",\"date\":\"2025-06-15\",\"budget\":15000,\"city\":\"Delhi\",\"referenceImage\":\"https://dummyimage.com/100x100\"}"
+        }
+      }
+    },
+    {
+      "name": "-- Partner APIs --"
+    },
+    {
+      "name": "Create Partner Profile",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/partner/profile",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","partner","profile"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"bio\":\"Professional wedding photographer\",\"experience\":5}"
+        }
+      }
+    },
+    {
+      "name": "Get Partner Leads",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/partner/leads",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","partner","leads"]
+        }
+      }
+    },
+    {
+      "name": "Add Portfolio Item",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/partner/portfolio",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","partner","portfolio"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"imageUrl\":\"https://dummyimage.com/portfolio1\",\"description\":\"Wedding candid shot\",\"index\":1}"
+        }
+      }
+    },
+    {
+      "name": "Get Partner Portfolio",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/partner/portfolio",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","partner","portfolio"]
+        }
+      }
+    },
+    {
+      "name": "Update Portfolio Item",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/partner/portfolio/:id",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","partner","portfolio",":id"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"description\":\"Updated description\",\"orderIndex\":2}"
+        }
+      }
+    },
+    {
+      "name": "Delete Portfolio Item",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/partner/portfolio/:id",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","partner","portfolio",":id"]
+        }
+      }
+    },
+    {
+      "name": "Reorder Portfolio Items",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/partner/portfolio/reorder",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","partner","portfolio","reorder"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "[{\"id\":\"60f6f9f5c9a8b834d8d7a2a1\",\"orderIndex\":1},{\"id\":\"60f6f9f5c9a8b834d8d7a2a2\",\"orderIndex\":2}]"
+        }
+      }
+    },
+    {
+      "name": "-- Admin APIs --"
+    },
+    {
+      "name": "Get Admin Stats",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/admin/stats",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","admin","stats"]
+        }
+      }
+    },
+    {
+      "name": "Get Pending Partners",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/admin/pending-partners",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","admin","pending-partners"]
+        }
+      }
+    },
+    {
+      "name": "Verify Partner",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/admin/verify-partner/:partnerId",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","admin","verify-partner",":partnerId"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"status\":\"verified\",\"comment\":\"Documents verified successfully\"}"
+        }
+      }
+    },
+    {
+      "name": "Promote Partner",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/admin/promote-partner/:partnerId",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","admin","promote-partner",":partnerId"]
+        }
+      }
+    },
+    {
+      "name": "-- Category APIs --"
+    },
+    {
+      "name": "Create Category",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/category",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","category"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Wedding Photography\",\"description\":\"Photography for weddings\"}"
+        }
+      }
+    },
+    {
+      "name": "Get Categories",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/category",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","category"]
+        }
+      }
+    },
+    {
+      "name": "Update Category",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/category/:id",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","category",":id"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Updated Category\",\"description\":\"Updated description\"}"
+        }
+      }
+    },
+    {
+      "name": "Delete Category",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/category/:id",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","category",":id"]
+        }
+      }
+    },
+    {
+      "name": "-- Location APIs --"
+    },
+    {
+      "name": "Create Location",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/location",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","location"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Delhi\",\"state\":\"Delhi\",\"country\":\"India\"}"
+        }
+      }
+    },
+    {
+      "name": "Get Locations",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/location",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","location"]
+        }
+      }
+    },
+    {
+      "name": "Update Location",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/location/:id",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","location",":id"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"New Delhi\",\"state\":\"Delhi\",\"country\":\"India\"}"
+        }
+      }
+    },
+    {
+      "name": "Delete Location",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/location/:id",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","location",":id"]
+        }
+      }
+    },
+    {
+      "name": "-- Review APIs --"
+    },
+    {
+      "name": "Get All Reviews",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/review",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","review"]
+        }
+      }
+    },
+    {
+      "name": "Delete Review",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/review/:id",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","review",":id"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "jwt_token",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
